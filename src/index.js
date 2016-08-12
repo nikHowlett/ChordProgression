@@ -1,38 +1,4 @@
-/**
-    Copyright 2014-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
-    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
-
-        http://aws.amazon.com/apache2.0/
-
-    or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-*/
-
-/**
- * This sample shows how to create a Lambda function for handling Alexa Skill requests that:
- * - Web service: communicate with an external web service to get tide data from NOAA CO-OPS API (http://tidesandcurrents.noaa.gov/api/)
- * - Multiple optional slots: has 2 slots (city and date), where the user can provide 0, 1, or 2 values, and assumes defaults for the unprovided values
- * - DATE slot: demonstrates date handling and formatted date responses appropriate for speech
- * - Custom slot type: demonstrates using custom slot types to handle a finite set of known values
- * - Dialog and Session state: Handles two models, both a one-shot ask and tell model, and a multi-turn dialog model.
- *   If the user provides an incorrect slot in a one-shot model, it will direct to the dialog model. See the
- *   examples section for sample interactions of these models.
- * - Pre-recorded audio: Uses the SSML 'audio' tag to include an ocean wave sound in the welcome response.
- *
- * Examples:
- * One-shot model:
- *  User:  "Alexa, ask Tide Pooler when is the high tide in Seattle on Saturday"
- *  Alexa: "Saturday June 20th in Seattle the first high tide will be around 7:18 am,
- *          and will peak at ...""
- * Dialog model:
- *  User:  "Alexa, open Tide Pooler"
- *  Alexa: "Welcome to Tide Pooler. Which city would you like tide information for?"
- *  User:  "Seattle"
- *  Alexa: "For which date?"
- *  User:  "this Saturday"
- *  Alexa: "Saturday June 20th in Seattle the first high tide will be around 7:18 am,
- *          and will peak at ...""
- */
 
 /**
  * App ID for the skill
@@ -47,7 +13,7 @@ const clientMonitor = influx({
   port : 8086,
   protocol : 'http',
   username : 'infwriter',
-  password : '21nf1ux',
+  password : '-',
   database : 'splunk_alerts'
 });
 
@@ -374,10 +340,28 @@ function getNextChord(key, lastChord) {
     }*/
   } else {
     //Find relationship between this Chord & key
-    var breaker = true;
+    //Find J value (index of Chord)
+    var breaker = true
+    int j = 0;
     while (breaker) {
+      if (chordsInABox[j] === currentProgression[currentProgression.length - 1]) {
+        breaker = false;
+      }
       if (j > 11) {
-
+        j = 0;
+      } else {
+        j++;
+      }
+    }
+    int i = 0;
+    while (breaker) {
+      if (chordsInABox[i] === currentProgression[0]) {
+        breaker = false;
+      }
+      if (i > 11) {
+        i = 0;
+      } else {
+        i++;
       }
     }
   }
