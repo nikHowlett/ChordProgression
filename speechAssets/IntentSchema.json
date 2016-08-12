@@ -1,0 +1,67 @@
+{
+  "intents": [
+    {
+      "intent": "FirstChordIntent",
+        "slots": [
+          {
+            "name": "CTA",
+            "type": "LIST_OF_CTAS"
+          },
+          {
+            "name": "Condition",
+            "type": "LIST_OF_CONDITIONS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "NextChordIntent",
+        "slots": [
+          {
+            "name": "CTA",
+            "type": "LIST_OF_CTAS"
+          },
+          {
+            "name": "Condition",
+            "type": "LIST_OF_CONDITIONS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "DialogTideIntent",
+      "slots": [
+        {
+          "name": "CTA",
+          "type": "LIST_OF_CTAS"
+        },
+        {
+          "name": "Condition",
+          "type": "LIST_OF_CONDITIONS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "SupportedCTASIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
